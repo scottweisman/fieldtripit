@@ -1,0 +1,14 @@
+<h1>Your classrooms</h1>
+<%= link_to 'Add Classroom', new_classroom_path, :class => 'btn' %>
+<br />
+<div class="classrooms">
+<% if @classrooms.any? %>
+<% @classrooms.each do |classroom| %>
+<div class="classroom">
+    <h3><%= link_to classroom.classroom_name, classroom %></h3>
+    <%= link_to 'Edit', edit_classroom_path(classroom) %>
+    </div>
+  </div>
+<% end %>
+<% end %>
+

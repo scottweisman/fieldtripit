@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<%= @classroom.classroom_name %>
+<br />
+<br />
+
+<p>
+  <b>Student first name:</b>
+  <%= @student.student_first_name %>
+</p>
+
+<p>
+  <b>Student last name:</b>
+  <%= @student.student_last_name %>
+</p>
+
+<p>
+  <b>Parent1 email:</b>
+  <%= @student.parent1_email %>
+</p>
+
+<p>
+  <b>Parent2 email:</b>
+  <%= @student.parent2_email %>
+</p>
+
+
+<%= link_to 'Edit', edit_classroom_student_path(@classroom, @student) %>

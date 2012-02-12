@@ -1,12 +1,15 @@
 <% if user_signed_in? %>
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <%= link_to image_tag("logo-yellow.png"), root_path, :class => "brand" %>
-      <ul class="nav">
+<div class="header">
+  <div class="container">
+
+      <%= link_to image_tag("logo-white.png"), root_path, :class => "brand" %>
+      <div class="top-nav">
+      <ul class="nav nav-pills left-nav">
+        <li class=<%= "#{@overview_active}" %>><%= link_to "Overview", root_path, :class => @overview_active %></li>
         <li class=<%= "#{@trip_active}" %>><%= link_to "Trips", trips_path, :class => @trip_active %></li>
-      </ul>
-    <ul class="nav pull-right">
+      <li class=<%= "#{@classroom_active}" %>><%= link_to "Classrooms", classrooms_path, :class => @classroom_active %></li>
+    </ul>
+    <ul class="nav nav-pills pull-right">
         <li class="dropdown" data-dropdown="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= "#{current_user.email}" %><b class="caret"></b></a>
       <ul class="dropdown-menu">
@@ -18,9 +21,8 @@
         <%= link_to "Sign up", new_user_registration_path %> | 
         <%= link_to "Sign in", new_user_session_path %>
         <% end %>
+        </div>
       </div>
-    </div>
-  </div>
-
+</div>
 
 

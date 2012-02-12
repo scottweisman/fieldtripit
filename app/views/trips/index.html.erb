@@ -1,14 +1,18 @@
-<h1>All trips</h1>
+<h1>Your Field Trips</h1>
+<%= link_to 'New Trip', new_trip_path, :class => 'btn' %>
 
 <div class="trips">
+  
   <% if @trips.any? %>
   <% @trips.each do |trip| %>
   <div class="trip">
+    <h3><%= link_to trip.place, trip %></h3>
     <p>
-    <%= link_to trip.place, trip %><br />
-    <%= trip.start_date %> -
-    <%= trip.end_date %><br />
-    <%= trip.description %>
+      <%= trip.start_date.strftime("%A, %B %d") %>
+      <%= trip.start_time.strftime("%l:%M") %>
+      to
+      <%= trip.end_time.strftime("%l:%M") %><br />
+      <%= trip.description %><br />
     <%= link_to 'Edit', edit_trip_path(trip) %>
     </p>
   </div>
@@ -16,4 +20,3 @@
 <% end %>
 </div>
 
-<%= link_to 'New Trip', new_trip_path %>

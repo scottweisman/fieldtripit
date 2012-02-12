@@ -1,24 +1,26 @@
 <% if user_signed_in? %>
+<%= link_to 'New Trip', new_trip_path, :class => 'btn' %>
 <% if @trips.any? %>
-<h2>Upcoming trips:</h2>
 <div class="trips">
+  <h2>Upcoming trips:</h2>
   <% @trips.each do |trip| %>
   <div class="trip">
+    <h3><%= link_to trip.place, trip %></h3>
     <p>
-    <%= link_to trip.place, trip %><br />
-    <%= trip.start_date %> -
-    <%= trip.end_date %><br />
+    <%= trip.start_date.strftime("%A, %B %d") %>
+    <%= trip.start_time.strftime("%l:%M") %>
+    to
+    <%= trip.end_time.strftime("%l:%M") %><br />
     <%= trip.description %>
     </p>
   </div>
 <% end %>
 </div>
 <h2>My Classes:</h2>
-
+<% @classrooms.each do |classroom| %>
+  <h3><%= link_to classroom.classroom_name, classroom %></h3>
+<% end %>
 <% else %>
-Sign in 
 
 <% end %>
 <% end %>
-
-<!-- .strftime("%A, %B %d") -->

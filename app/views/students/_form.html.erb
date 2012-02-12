@@ -1,0 +1,37 @@
+<%= form_for([@classroom, @student]) do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% @student.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row">
+  <div class="span12">    
+  <div class="form-inline">
+    <%= f.fields_for :students do |student| %>
+      <div class="span3">
+      <%= student.text_field :student_full_name %>
+      </div>
+      <div class="span3">
+      <%= student.text_field :parent1_email %>
+      </div>
+      <div class="span3">
+      <%= student.text_field :parent2_email %>
+      </div>
+    <% end %>
+    <%= f.hidden_field :classroom_id %>
+  </div>
+</div>
+<br />
+<br />
+<div class="row">
+  <div class="span10">
+    <%= f.submit 'Save', :class => 'btn pull-right' %>
+  </div>
+</div>
+<% end %>

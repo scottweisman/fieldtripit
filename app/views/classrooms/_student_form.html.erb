@@ -1,0 +1,38 @@
+<%= form_for(@classroom) do |f| %>
+  <% if @classroom.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@classroom.errors.count, "error") %> prohibited this classroom from being saved:</h2>
+
+      <ul>
+      <% @classroom.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row">
+  <div class="span12">    
+  <div class="form-inline">
+    <%= f.fields_for :students do |builder| %>
+      <div class="span3">
+      <%= builder.text_field :student_full_name %>
+      </div>
+      <div class="span3">
+      <%= builder.text_field :parent1_email %>
+      </div>
+      <div class="span3">
+      <%= builder.text_field :parent2_email %>
+      </div>
+    <% end %>
+    <%= builder.hidden_field :classroom_id %>
+  </div>
+</div>
+<br />
+<br />
+<div class="row">
+  <div class="span10">
+    <%= f.submit 'Save', :class => 'btn pull-right' %>
+  </div>
+</div>
+<% end %>

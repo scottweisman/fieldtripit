@@ -1,0 +1,59 @@
+<%= form_for(@classroom) do |f| %>
+  <% if @classroom.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@classroom.errors.count, "error") %> prohibited this classroom from being saved:</h2>
+
+      <ul>
+      <% @classroom.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-inline">
+    <%= f.label :classroom_name %>
+    <%= f.text_field :classroom_name %>
+  </div>
+  
+  <br />
+  <br />
+  
+  <div class="row">
+    <div class="span12">
+      <div class="span3">
+        Student name
+      </div>
+      <div class="span3">
+        Parent 1 Email
+      </div>
+      <div class="span3">
+        Parent 2 Email
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="span12">    
+    <div class="form-inline">
+      <%= f.fields_for :students do |builder| %>
+        <div class="span3">
+        <%= builder.text_field :student_full_name %>
+        </div>
+        <div class="span3">
+        <%= builder.text_field :parent1_email %>
+        </div>
+        <div class="span3">
+        <%= builder.text_field :parent2_email %>
+        </div>
+      <%= builder.hidden_field :classroom_id %>
+      <% end %>
+    </div>
+  </div>
+  </div>
+  
+  <%= f.hidden_field :user_id %>
+  <div class="actions">
+    <%= f.submit 'Save', :class => 'btn' %>
+  </div>
+<% end %>

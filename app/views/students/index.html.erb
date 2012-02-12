@@ -1,0 +1,14 @@
+<h1><%= @classroom.classroom_name %></h1>
+<div class="students">
+<% @students.each do |student| %>
+<div class="student">
+  <%= student.student_first_name %>
+  <%= student.student_last_name %>
+  <%= link_to 'Edit', edit_classroom_student_path(@classroom, student) %>
+<% end %>
+</div>
+</div>
+
+<br />
+
+<%= link_to 'Add Student', new_classroom_student_path %>

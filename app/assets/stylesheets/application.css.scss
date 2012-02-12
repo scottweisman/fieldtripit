@@ -12,15 +12,58 @@
  *= require_tree .
 */
 
-$baseFontFamily: verdana;
+$baseFontFamily: Lucida Grande, Lucida Sans, Lucida Sans Unicode;
+$linkColor: #277c5b;
 @import "bootstrap";
 
-.brand img {
-	width: 110px;
-	height: 30px;
+body {
+	background: url('chalkboard-light.jpg') repeat-x;
+	background-color: #F0F0F0;
 }
 
-body {
-	padding-top: 60px;
+.content {
+	margin-top: 200px;
 }
-	
+
+h1 {
+	paddding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.header {
+	width: 100%;
+	padding-top: 40px;
+	margin-bottom: 20px;
+}
+
+.brand img {
+	width: 150px;
+	height: 40px;
+	float: left;
+	margin-right: 50px;
+}
+
+.nav {
+	display: inline;
+}
+
+.nav a {
+	color: #fff;
+	font-size: 16px;
+}
+
+.nav li a:hover {
+	color: #666;
+}
+
+.nav-pills .active > a, .nav-pills .active > a:hover {
+	color: #666;
+	background-color: #eee;
+}
+
+.nav-pills:after {
+	clear: none;
+}
+

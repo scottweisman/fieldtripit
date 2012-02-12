@@ -1,4 +1,8 @@
 Fieldtripit::Application.routes.draw do
+  resources :classrooms do
+    resources :students
+  end 
+  
   devise_for :users
   resources :trips
   
