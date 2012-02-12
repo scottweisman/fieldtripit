@@ -1,0 +1,19 @@
+<h1>All trips</h1>
+
+<div class="trips">
+  <% if @trips.any? %>
+  <% @trips.each do |trip| %>
+  <div class="trip">
+    <p>
+    <%= link_to trip.place, trip %><br />
+    <%= trip.start_date %> -
+    <%= trip.end_date %><br />
+    <%= trip.description %>
+    <%= link_to 'Edit', edit_trip_path(trip) %>
+    </p>
+  </div>
+  <% end %>
+<% end %>
+</div>
+
+<%= link_to 'New Trip', new_trip_path %>

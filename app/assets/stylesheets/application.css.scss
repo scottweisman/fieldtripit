@@ -11,3 +11,16 @@
  *= require_self
  *= require_tree .
 */
+
+$baseFontFamily: verdana;
+@import "bootstrap";
+
+.brand img {
+	width: 110px;
+	height: 30px;
+}
+
+body {
+	padding-top: 60px;
+}
+	

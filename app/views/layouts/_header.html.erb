@@ -1,0 +1,26 @@
+<% if user_signed_in? %>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to image_tag("logo-yellow.png"), root_path, :class => "brand" %>
+      <ul class="nav">
+        <li class=<%= "#{@trip_active}" %>><%= link_to "Trips", trips_path, :class => @trip_active %></li>
+      </ul>
+    <ul class="nav pull-right">
+        <li class="dropdown" data-dropdown="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= "#{current_user.email}" %><b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+      </ul>
+      </li>
+    </ul>
+      <% else %>
+        <%= link_to "Sign up", new_user_registration_path %> | 
+        <%= link_to "Sign in", new_user_session_path %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+

@@ -1,0 +1,24 @@
+<% if user_signed_in? %>
+<% if @trips.any? %>
+<h2>Upcoming trips:</h2>
+<div class="trips">
+  <% @trips.each do |trip| %>
+  <div class="trip">
+    <p>
+    <%= link_to trip.place, trip %><br />
+    <%= trip.start_date %> -
+    <%= trip.end_date %><br />
+    <%= trip.description %>
+    </p>
+  </div>
+<% end %>
+</div>
+<h2>My Classes:</h2>
+
+<% else %>
+Sign in 
+
+<% end %>
+<% end %>
+
+<!-- .strftime("%A, %B %d") -->

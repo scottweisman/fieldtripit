@@ -11,5 +11,19 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require_tree .
+//= require_self
+
+$(document).ready(function() {
+	$('#trip_start_date').datepicker({dateFormat: "yy-mm-dd"});
+	$('#trip_start_time').timepicker({
+		'minTime': '7:00am',
+		'maxTime': '5:00pm',
+	});
+	$('#trip_end_time').timepicker({
+		'minTime': '7:00am',
+		'maxTime': '5:00pm',
+	});
+});  
