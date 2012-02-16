@@ -1,0 +1,24 @@
+<%= form_for(@trip) do |f| %>
+  <% if @trip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
+
+      <ul>
+      <% @trip.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="classrooms-checkbox">
+  <%= hidden_field_tag "trip[classroom_ids][]", nil %>
+  <% Classroom.all.each do |classroom| %>
+    <%= check_box_tag "trip[classroom_ids][]", classroom.id, @trip.classroom_ids.include?(classroom.id), id: dom_id(classroom), class: 'checkbox' %>
+    <%= label_tag dom_id(classroom), classroom.classroom_name, class: 'checkbox' %>
+  <% end %>
+</div>
+  <div class="button">
+    <%= f.submit 'Save', :class => 'btn primary' %>
+  </div>
+<% end %>

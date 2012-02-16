@@ -18,5 +18,19 @@
   <b>Description:</b>
   <%= @trip.description %>
 </p>
+<% if @trip.classrooms.any? %>
+  <p>
+    <b>Classes Going:</b>
+    <% @trip.classrooms.each do |classroom| %>
+      <p><%= classroom.classroom_name %></p>
+    <% end %> 
+  </p>
 
-<%= link_to 'Edit', edit_trip_path(@trip) %>
+<% else %>
+  <h2>Who's Going?</h2>
+  <%= render 'invitation_form' %>
+<% end %>
+
+
+<%= link_to 'Edit trip', edit_trip_path(@trip) %>
+

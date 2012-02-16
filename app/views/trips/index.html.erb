@@ -1,9 +1,7 @@
-<h1>Your Field Trips</h1>
-<%= link_to 'New Trip', new_trip_path, :class => 'btn' %>
-
-<div class="trips">
-  
-  <% if @trips.any? %>
+<div class="trips">  
+<% if @trips.any? %>
+  <h1>Your Field Trips</h1>
+  <%= link_to 'New Trip', new_trip_path, :class => 'btn' %>
   <% @trips.each do |trip| %>
   <div class="trip">
     <h3><%= link_to trip.place, trip %></h3>
@@ -15,8 +13,11 @@
       <%= trip.description %><br />
     <%= link_to 'Edit', edit_trip_path(trip) %>
     </p>
-  </div>
   <% end %>
+</div>  
+<% else %>
+  <h2>You haven't created any trips yet.<br />Create your first field trip now:</h2>  <br />
+  <%= render 'trips/form' %>
 <% end %>
 </div>
 

@@ -3,6 +3,7 @@ class TripsController < ApplicationController
 
   def index
     @trips = current_user.trips.all
+    @trip = Trip.new
     @trip_active = 'active'
     
     respond_to do |format|
@@ -35,11 +36,13 @@ class TripsController < ApplicationController
 
   def create
     @trip = current_user.trips.build(params[:trip])
+    @classrooms = current_user.classrooms.all
 
     respond_to do |format|
-      if @trip.save
+      if @trip.save && @classrooms.blank?
+        format.html { redirect_to new_classroom_path, notice: 'Trip was successfully created.' }
+      elsif @trip.save && @classrooms.any?
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
-        format.json { render json: @trip, status: :created, location: @trip }
       else
         format.html { render action: "new" }
         format.json { render json: @trip.errors, status: :unprocessable_entity }

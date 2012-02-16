@@ -17,12 +17,12 @@ $linkColor: #277c5b;
 @import "bootstrap";
 
 body {
-	background: url('chalkboard-light.jpg') repeat-x;
+/*	background: url('chalkboard-light.jpg') repeat-x; */	
 	background-color: #F0F0F0;
 }
 
 .content {
-	margin-top: 200px;
+	/*margin-top: 200px;*/
 }
 
 h1 {
@@ -36,6 +36,7 @@ h1 {
 	width: 100%;
 	padding-top: 40px;
 	margin-bottom: 20px;
+	background-color: #277C5B;
 }
 
 .brand img {
@@ -67,3 +68,15 @@ h1 {
 	clear: none;
 }
 
+ul.dropdown-menu a {
+	color: #666;
+}
+
+ul.dropdown-menu a:hover {
+	color: #666;
+	background-color: #eee;
+}
+
+input.checkbox {
+	float: left;
+}

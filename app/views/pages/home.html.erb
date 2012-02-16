@@ -1,6 +1,5 @@
-<% if user_signed_in? %>
+<% if user_signed_in? && if @trips.any? %>
 <%= link_to 'New Trip', new_trip_path, :class => 'btn' %>
-<% if @trips.any? %>
 <div class="trips">
   <h2>Upcoming trips:</h2>
   <% @trips.each do |trip| %>
@@ -20,7 +19,12 @@
 <% @classrooms.each do |classroom| %>
   <h3><%= link_to classroom.classroom_name, classroom %></h3>
 <% end %>
-<% else %>
 
+<% else %>
+<h2>Create your first field trip:</h2>
+<br />
+<%= render 'trips/form' %>
+<br />
+<h4><%= link_to 'Or add a classroom first', new_classroom_path %></h2>
 <% end %>
 <% end %>

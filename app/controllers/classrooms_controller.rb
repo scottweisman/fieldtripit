@@ -3,6 +3,8 @@ class ClassroomsController < ApplicationController
 
   def index
     @classrooms = current_user.classrooms.all
+    @classroom = Classroom.new
+    25.times { @classroom.students.build }
     @classroom_active = 'active'
     
     respond_to do |format|
