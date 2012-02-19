@@ -3,6 +3,7 @@ class PermissionMailer < ActionMailer::Base
 
   def permission_slip(permission)
     @permission = permission
+    @token      = @permission.token
     mail(:to => permission.parent1_email, :subject => "Permission Slip")
   end
   

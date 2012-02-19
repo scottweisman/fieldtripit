@@ -25,6 +25,8 @@
   <%= @permission.sent_at %>
 </p>
 
+<%= link_to "Give permission", confirm_permissions_path(@permission.token) %>
+
 
 <%= link_to 'Edit', edit_permission_path(@permission) %> |
 <%= link_to 'Back', permissions_path %>

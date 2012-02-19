@@ -1,8 +1,8 @@
 class PermissionsController < ApplicationController
-  # GET /permissions
-  # GET /permissions.json
+  before_filter :authenticate_user!, :except => [:confirm]
+
   def index
-    @permissions = Permission.all
+    @permissions = current_user.permissions.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,8 +10,6 @@ class PermissionsController < ApplicationController
     end
   end
 
-  # GET /permissions/1
-  # GET /permissions/1.json
   def show
     @permission = Permission.find(params[:id])
 
@@ -21,8 +19,6 @@ class PermissionsController < ApplicationController
     end
   end
 
-  # GET /permissions/new
-  # GET /permissions/new.json
   def new
     @permission = Permission.new
 
@@ -32,13 +28,10 @@ class PermissionsController < ApplicationController
     end
   end
 
-  # GET /permissions/1/edit
   def edit
     @permission = Permission.find(params[:id])
   end
 
-  # POST /permissions
-  # POST /permissions.json
   def create
     @permission = current_user.permissions.build(params[:permission])    
 
@@ -54,8 +47,6 @@ class PermissionsController < ApplicationController
     end
   end
 
-  # PUT /permissions/1
-  # PUT /permissions/1.json
   def update
     @permission = Permission.find(params[:id])
 
@@ -70,8 +61,6 @@ class PermissionsController < ApplicationController
     end
   end
 
-  # DELETE /permissions/1
-  # DELETE /permissions/1.json
   def destroy
     @permission = Permission.find(params[:id])
     @permission.destroy
@@ -83,6 +72,6 @@ class PermissionsController < ApplicationController
   end
   
   def confirm
-
+    #
   end
 end

@@ -3,6 +3,9 @@ Our class has a field trip coming up.
 This is your permission slip.
 </p>
 
-<%= link_to "Give permission", permission_url(@permission) %>
+<%= link_to "Give permission", confirm_permissions_url(@token) %>
+
+<br>
+<%= link_to "View details", permission_url(@permission) %>
 
 <%= @permission.token %>
