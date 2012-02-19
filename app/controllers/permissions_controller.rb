@@ -83,6 +83,6 @@ class PermissionsController < ApplicationController
   end
   
   def confirm
-    @permission = Permission.find(params[:id])
+
   end
 end

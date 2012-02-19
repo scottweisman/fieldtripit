@@ -7,7 +7,7 @@ Fieldtripit::Application.routes.draw do
   devise_for :users
   resources :trips
   
-  match 'permissions/:token' => 'permissions#confirm'
+  match 'permissions/confirm/:token' => 'permissions#confirm'
   resources :permissions
   
   root :to => "pages#home"
