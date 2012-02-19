@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @permission.user_id %>
+</p>
+
+<p>
+  <b>Parent1 email:</b>
+  <%= @permission.parent1_email %>
+</p>
+
+<p>
+  <b>Parent2 email:</b>
+  <%= @permission.parent2_email %>
+</p>
+
+<p>
+  <b>Token:</b>
+  <%= @permission.token %>
+</p>
+
+<p>
+  <b>Sent at:</b>
+  <%= @permission.sent_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_permission_path(@permission) %> |
+<%= link_to 'Back', permissions_path %>

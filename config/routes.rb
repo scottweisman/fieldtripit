@@ -1,10 +1,14 @@
 Fieldtripit::Application.routes.draw do
+
   resources :classrooms do
     resources :students
   end 
   
   devise_for :users
   resources :trips
+  
+  match 'permissions/:token' => 'permissions#confirm'
+  resources :permissions
   
   root :to => "pages#home"
 

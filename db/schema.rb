@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120216021142) do
+ActiveRecord::Schema.define(:version => 20120218202614) do
 
   create_table "classrooms", :force => true do |t|
     t.string   "classroom_name"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(:version => 20120216021142) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "permissions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "student_id"
+    t.string   "parent1_email"
+    t.string   "parent2_email"
+    t.string   "token"
+    t.datetime "sent_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "students", :force => true do |t|
     t.string   "student_first_name"
     t.string   "student_last_name"
@@ -35,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20120216021142) do
     t.integer  "classroom_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "permission_id"
   end
 
   create_table "trips", :force => true do |t|
@@ -62,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20120216021142) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.integer  "permission_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

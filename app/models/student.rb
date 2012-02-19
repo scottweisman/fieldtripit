@@ -1,5 +1,6 @@
 class Student < ActiveRecord::Base
   belongs_to :classroom
+  has_one :permission
   
   def student_full_name
     [student_first_name, student_last_name].join(' ')
