@@ -20,9 +20,8 @@ class StudentsController < ApplicationController
   end
 
   def new
-    @student = Student.new
-    3.times { @classroom.students.build }
-    
+    @student = @classroom.students.new
+        
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @student }
@@ -37,7 +36,7 @@ class StudentsController < ApplicationController
     @student = @classroom.students.build(params[:student])
 
     respond_to do |format|
-      if @student.save
+      if @classroom.students.save
         format.html { redirect_to classroom_student_path, notice: 'Student was successfully created.' }
         format.json { render json: @student, status: :created, location: @student }
       else

@@ -1,6 +1,7 @@
 class Permission < ActiveRecord::Base
   belongs_to :user
   belongs_to :student
+  belongs_to :trip
   
   before_create :generate_token, :set_sent_at
   

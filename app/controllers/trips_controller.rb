@@ -14,6 +14,8 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    @classrooms = @trip.classrooms
+    @students = @trip.students
 
     respond_to do |format|
       format.html # show.html.erb

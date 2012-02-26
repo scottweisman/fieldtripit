@@ -34,3 +34,7 @@
 
 <%= link_to 'Edit trip', edit_trip_path(@trip) %>
 
+<br>
+<% @students.each do |student| %>
+  <%= student.student_last_name %>
+<% end %>
