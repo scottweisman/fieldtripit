@@ -17,6 +17,8 @@ class TripsController < ApplicationController
     @classrooms = @trip.classrooms
     @students = @trip.students
 
+    @permission = Permission.new
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @trip }
@@ -52,8 +54,6 @@ class TripsController < ApplicationController
     end
   end
 
-  # PUT /trips/1
-  # PUT /trips/1.json
   def update
     @trip = Trip.find(params[:id])
 
@@ -68,8 +68,6 @@ class TripsController < ApplicationController
     end
   end
 
-  # DELETE /trips/1
-  # DELETE /trips/1.json
   def destroy
     @trip = Trip.find(params[:id])
     @trip.destroy
@@ -77,6 +75,14 @@ class TripsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to trips_url }
       format.json { head :no_content }
+    end
+  end
+  
+  def deliver
+    @trip = Trip.find(params[:id])
+    @students = @trip.students.all
+    @students.each do |student|
+      PermissionMailer.permission_slip(student).deliver
     end
   end
 end

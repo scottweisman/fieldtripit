@@ -5,7 +5,12 @@ Fieldtripit::Application.routes.draw do
   end 
   
   devise_for :users
-  resources :trips
+  
+  resources :trips do
+    member do
+      post 'deliver'
+    end
+  end
   
   match 'permissions/confirm/:token' => 'permissions#confirm', :as => :confirm_permissions, :via => [:get]
   resources :permissions

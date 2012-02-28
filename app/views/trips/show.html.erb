@@ -35,6 +35,12 @@
 <%= link_to 'Edit trip', edit_trip_path(@trip) %>
 
 <br>
+<br>
+<h2>Students going</h2>
 <% @students.each do |student| %>
-  <%= student.student_last_name %>
+  <%= student.parent1_email %>
 <% end %>
+
+<br>
+
+<%= button_to "Send Permission Slips", :controller => 'trips', :action => 'deliver', :method => 'post' %>

@@ -33,6 +33,7 @@ class PermissionsController < ApplicationController
   end
 
   def create
+    @trip       = Trip.find(9)    
     @permission = current_user.permissions.build(params[:permission])    
 
     respond_to do |format|
@@ -70,8 +71,5 @@ class PermissionsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  def confirm
-    #
-  end
+
 end
